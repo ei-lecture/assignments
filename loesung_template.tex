@@ -1,0 +1,370 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Vorlage für Ihre Lösungen in der Vorlesung EI
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt,a4paper,DIV=12]{scrartcl}
+
+% Pakete einbinden, die benötigt werden
+\usepackage{scrlayer-scrpage}
+\usepackage[utf8]{inputenc}       % Dateien in UTF-8 benutzen
+\usepackage[T1]{fontenc}          % Zeichenkodierung
+\usepackage{graphicx}             % Bilder einbinden
+\usepackage[main=ngerman, english]{babel}  % Deutsche Sprachunterstützung
+\usepackage[autostyle=true,german=quotes]{csquotes} % Deutsche Anführungszeichen
+\usepackage[pagebackref=false,german]{hyperref} % Hyperlinks
+\usepackage{xcolor}               % Unterstützung für Farben
+\usepackage{amsmath}              % Mathematische Formeln
+\usepackage{amsfonts}             % Mathematische Zeichensätze
+\usepackage{amssymb}              % Mathematische Symbole
+\usepackage{float}                % Fließende Objekte (Tabellen, Grafiken etc.)
+\usepackage{booktabs}             % Korrekter Tabellensatz
+\usepackage{listings}             % Quelltexte
+\usepackage{listingsutf8}         % Quelltexte in UTF8
+\usepackage[hang,font={sf,footnotesize},labelfont={footnotesize,bf}]{caption} % Beschriftungen
+\usepackage[scaled]{helvet}       % Schrift Helvetia laden
+\usepackage[bottom=25mm,left=30mm,right=30mm,top=25mm]{geometry} % Ränder ändern
+\usepackage{setspace}             % Abstände korrigieren
+\usepackage{scrhack}              % tocbasic Warnung entfernen
+\usepackage[all]{hypcap}          % Korrekte Verlinkung von Floats
+\usepackage{tabularx}             % Spezielle Tabellen
+\usepackage{rotating}             % Seiten drehen
+\usepackage{array}
+\usepackage{textcomp}
+\usepackage{scalefnt}
+\usepackage{comment}
+
+ % Einstellungen für Schriftarten
+\setkomafont{titlehead}{\centering\normalfont\sffamily}
+\setkomafont{author}{\normalfont\sffamily}
+\setkomafont{publishers}{\normalfont\sffamily}
+\setkomafont{date}{\normalfont\sffamily}
+\setkomafont{title}{\normalfont\sffamily\bfseries\LARGE}
+\setkomafont{pagehead}{\normalfont\sffamily}
+\setkomafont{pagenumber}{\normalfont\sffamily}
+\setkomafont{paragraph}{\sffamily\bfseries\small}
+\setkomafont{subsection}{\sffamily\bfseries\Large}
+\setkomafont{subsubsection}{\sffamily\itshape\bfseries\small}
+\addtokomafont{footnote}{\footnotesize}
+
+% Wichtige Abstände
+\setlength{\parskip}{0.2cm}  % 2mm Abstand zwischen zwei Absätzen
+\setlength{\parindent}{0mm}  % Absätze nicht einziehen
+\clubpenalty = 10000         % Keine "Schusterjungen"
+\widowpenalty = 10000        % Keine "Hurenkinder"
+\displaywidowpenalty = 10000 % Keine "Hurenkinder"
+                             % Siehe: https://de.wikipedia.org/wiki/Hurenkind_und_Schusterjunge
+
+% Einfacher Font-Wechsel über dieses Makro
+\newcommand{\changefont}[3]{
+\fontfamily{#1} \fontseries{#2} \fontshape{#3} \selectfont}
+
+\changefont{ptm}{m}{n}  % Times New Roman für den Fließtext
+\renewcommand{\rmdefault}{ptm}
+
+\newcommand{\loesung}{\textbf{Lösung:}\\}
+
+\newcommand{\abgabetermin}[1]{\publishers{\textbf{Abgabetermin: #1}}}
+
+\newcommand{\kapitel}[1]{\setcounter{section}{#1}}
+
+
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+
+\RedeclareSectionCommand[
+  beforeskip=-1.0\baselineskip,
+  afterskip=0.01\baselineskip]{section}
+
+\RedeclareSectionCommand[
+  beforeskip=-1.0\baselineskip,
+  afterskip=0.01\baselineskip]{subsection}
+
+
+\lstset{
+      basicstyle=\small\ttfamily,
+      keywordstyle=\color{keyword},
+      stringstyle=\color{literal},
+      identifierstyle = \color{variable},
+      commentstyle=\color{comment},
+      showstringspaces=false,
+      columns=flexible,
+      inputencoding=utf8/latin1,
+      lineskip=0pt,
+      xleftmargin=6pt,
+      xrightmargin=6pt,
+      extendedchars=true,
+      captionpos=,
+        literate={Ö}{{\"O}}1
+                 {Ä}{{\"A}}1
+                 {Ü}{{\"U}}1
+                 {ß}{{\ss}}2
+                 {ü}{{\"u}}1
+                 {ä}{{\"a}}1
+                 {ö}{{\"o}}1,
+       emphstyle={\color{keyword}}
+}
+
+\lstdefinestyle{inline}{%
+   basicstyle=\footnotesize\ttfamily
+}
+
+\lstdefinelanguage{console}{
+  keywords={},
+}
+
+\definecolor{comment}{RGB}{63, 127, 95}
+\definecolor{javadoccomment}{RGB}{63, 95, 191}
+\definecolor{keyword}{RGB}{108, 0, 67}
+\definecolor{type}{RGB}{0, 0, 0}
+\definecolor{method}{RGB}{0, 0, 0}
+\definecolor{variable}{RGB}{0, 0, 0}
+\definecolor{literal}{RGB}{31,0, 255}
+\definecolor{operator}{RGB}{0, 0, 0}
+\definecolor{darkgreen}{RGB}{14, 144, 102}
+\definecolor{gray}{RGB}{50, 50, 50}
+\definecolor{weiss}{RGB}{255,255,255}
+\definecolor{gruen}{RGB}{58,92,57}
+\definecolor{grau}{RGB}{90,90,90}
+\definecolor{hellgrau}{RGB}{190,190,190}
+%\definecolor{blau}{RGB}{0,51,102}
+\definecolor{blau}{RGB}{8,71,174}
+\definecolor{hellblau}{RGB}{78,100,127}
+\definecolor{schwarz}{RGB}{0,0,0}
+\definecolor{rot}{RGB}{255,0,0}
+\definecolor{dunkelrot}{RGB}{128, 0, 0}
+
+\definecolor{comment}{RGB}{63, 127, 95}
+\definecolor{keyword}{RGB}{123, 11, 84}
+\definecolor{ndkeyword}{RGB}{90,90,90}
+\definecolor{type}{RGB}{0, 0, 0}
+\definecolor{package}{RGB}{0, 0, 0}
+\definecolor{method}{RGB}{0, 0, 0}
+\definecolor{literal}{RGB}{31,0, 255}
+\definecolor{operator}{RGB}{0, 0, 0}
+\definecolor{variable}{RGB}{0, 23, 120}
+\definecolor{darkgreen}{RGB}{14, 144, 102}
+\definecolor{darkred}{RGB}{128, 0, 0}
+
+\newcommand{\keyword}[1]{\texttt{\color{keyword}{#1}}}
+\newcommand{\method}[1]{\texttt{\color{method}{#1}}}
+\newcommand{\type}[1]{\texttt{\color{type}{#1}}}
+\newcommand{\literal}[1]{\texttt{\color{type}{#1}}}
+\newcommand{\operator}[1]{\texttt{\color{operator}{#1}}}
+\newcommand{\variable}[1]{\texttt{\color{variable}{#1}}}
+\newcommand{\blankpage}[3]{\ifprintanswers\else\newpage\fullwidth{\emph{Fortsetzung von Aufgabe~\ref{#1}~\ref{#2})}}\vspace{#3}\fi}
+
+% Where to search for images
+\graphicspath{{./images/}{./}}
+
+% Some useful macros
+\newenvironment{source}{\vspace{0.2cm}\begin{small}}{\end{small}\vspace{0.2cm}}
+\newenvironment{source_small}{\vspace{0.2cm}\begin{footnotesize}}{\end{footnotesize}\vspace{0.2cm}}
+
+\renewcommand{\labelitemi}{$-$}
+
+\newcommand{\zb}[0]{z.\,B.\ }
+\newcommand{\dahe}[0]{d.\,h.\ }
+\newcommand{\ua}[0]{u.\,a.\ }
+
+\newcommand{\tablefont}[0]{\scalefont{0.9}}
+
+\newcommand{\term}[1]{\textit{\textcolor{black}{#1}}}
+\newcommand{\termenglish}[1]{\textit{\textcolor{grau}{#1}}}
+\newcommand{\strong}[1]{\textit{\textcolor{black}{#1}}}
+\newcommand{\strongenglish}[1]{\textit{\textcolor{grau}{#1}}}
+\newcommand{\english}[1]{\textit{\textcolor{grau}{#1}}}
+
+\newcommand{\termalt}[1]{\textit{\underline{#1}}}
+\newcommand{\termenglishalt}[1]{\textit{\textcolor{grau}{#1}}}
+\newcommand{\strongalt}[1]{\underline{#1}}
+\newcommand{\strongenglishalt}[1]{\textcolor{grau}{#1}}
+\newcommand{\englishalt}[1]{\textcolor{grau}{#1}}
+
+\newenvironment{ul1}{%
+\begin{itemize} %
+% \setlength{\itemsep}{1mm}
+}
+{\end{itemize}}
+
+\newenvironment{ul2}{%
+%\vspace{1mm}
+\begin{itemize} %
+%    \setlength{\itemsep}{0.5mm}\small
+}
+{\end{itemize}}
+
+\newenvironment{ol1}{%
+\begin{enumerate} %
+% \setlength{\itemsep}{1.5mm}
+}
+{\end{enumerate}}
+
+\newenvironment{ol2}{%
+\begin{enumerate} %
+%    \setlength{\itemsep}{1mm}\small
+}
+{\end{enumerate}}
+
+\newenvironment{ol3}{%
+\begin{enumerate} %
+    \setlength{\itemsep}{1.8mm}\small}
+{\end{enumerate}}
+
+\newcommand{\bild}[3]{
+  \includegraphics[width=#2]{#1}\\
+  \textcolor{grau}{\sffamily\tiny #3}\label{#1}}
+
+\newcommand{\specialcell}[2][c]{%
+  \begin{tabular}[#1]{@{}l@{}}#2\end{tabular}%
+}
+
+\newcommand{\quoted}[2]{%
+\begin{framed}\doublespacing {\small #1}\\
+\vspace{2mm}\hfill \scriptsize \textcolor{grau}{#2}%
+\vspace{-2.5mm}\end{framed}%
+}
+
+\newcommand{\quotedns}[1]{%
+\begin{framed}\onehalfspacing {\small #1}\end{framed}%
+}
+
+\newcommand{\important}[1]{%
+\begin{framed}\textcolor{darkred}{#1}\end{framed}%
+}
+
+\newcommand{\question}[1]{%
+\begin{framed}\textcolor{blau}{#1}\end{framed}%
+}
+
+\newenvironment{solution}{%
+\textbf{Lösung:} %
+% \setlength{\itemsep}{1.5mm}
+}
+{}
+
+\newenvironment{lstblock}{\vspace{3mm}}{}
+
+\newcommand{\mybox}[1]{%
+\begin{framed}{#1}\end{framed}%
+}
+
+\lstdefinelanguage{console}{
+  keywords={},
+  stringstyle=\color{schwarz},
+  keywordstyle=\color{schwarz},
+  identifierstyle = \color{schwarz},
+  commentstyle=\color{schwarz},
+}
+
+\lstdefinelanguage{CSS}{
+  morekeywords={accelerator,azimuth,background,background-attachment,
+    background-color,background-image,background-position,
+    background-position-x,background-position-y,background-repeat,
+    behavior,border,border-bottom,border-bottom-color,
+    border-bottom-style,border-bottom-width,border-collapse,
+    border-color,border-left,border-left-color,border-left-style,
+    border-left-width,border-right,border-right-color,
+    border-right-style,border-right-width,border-spacing,
+    border-style,border-top,border-top-color,border-top-style,
+    border-top-width,border-width,bottom,caption-side,clear,
+    clip,color,content,counter-increment,counter-reset,cue,
+    cue-after,cue-before,cursor,direction,display,elevation,
+    empty-cells,filter,float,font,font-family,font-size,
+    font-size-adjust,font-stretch,font-style,font-variant,
+    font-weight,height,ime-mode,include-source,
+    layer-background-color,layer-background-image,layout-flow,
+    layout-grid,layout-grid-char,layout-grid-char-spacing,
+    layout-grid-line,layout-grid-mode,layout-grid-type,left,
+    letter-spacing,line-break,line-height,list-style,
+    list-style-image,list-style-position,list-style-type,margin,
+    margin-bottom,margin-left,margin-right,margin-top,
+    marker-offset,marks,max-height,max-width,min-height,
+    min-width,-moz-binding,-moz-border-radius,
+    -moz-border-radius-topleft,-moz-border-radius-topright,
+    -moz-border-radius-bottomright,-moz-border-radius-bottomleft,
+    -moz-border-top-colors,-moz-border-right-colors,
+    -moz-border-bottom-colors,-moz-border-left-colors,-moz-opacity,
+    -moz-outline,-moz-outline-color,-moz-outline-style,
+    -moz-outline-width,-moz-user-focus,-moz-user-input,
+    -moz-user-modify,-moz-user-select,orphans,outline,
+    outline-color,outline-style,outline-width,overflow,
+    overflow-X,overflow-Y,padding,padding-bottom,padding-left,
+    padding-right,padding-top,page,page-break-after,
+    page-break-before,page-break-inside,pause,pause-after,
+    pause-before,pitch,pitch-range,play-during,position,quotes,
+    -replace,richness,right,ruby-align,ruby-overhang,
+    ruby-position,-set-link-source,size,speak,speak-header,
+    speak-numeral,speak-punctuation,speech-rate,stress,
+    scrollbar-arrow-color,scrollbar-base-color,
+    scrollbar-dark-shadow-color,scrollbar-face-color,
+    scrollbar-highlight-color,scrollbar-shadow-color,
+    scrollbar-3d-light-color,scrollbar-track-color,table-layout,
+    text-align,text-align-last,text-decoration,text-indent,
+    text-justify,text-overflow,text-shadow,text-transform,
+    text-autospace,text-kashida-space,text-underline-position,top,
+    unicode-bidi,-use-link-source,vertical-align,visibility,
+    voice-family,volume,white-space,widows,width,word-break,
+    word-spacing,word-wrap,writing-mode,z-index,zoom},
+  morestring=[s]{:}{;},
+  sensitive,
+  morecomment=[s]{/*}{*/}
+}
+
+\lstdefinelanguage{javascript}{
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+  keywordstyle=\color{keyword},
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  ndkeywordstyle=\color{ndkeyword},
+  identifierstyle=\color{variable},
+  sensitive=true,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{comment},
+  stringstyle=\color{literal},
+  morestring=[b]',
+  morestring=[b]"
+}
+
+
+\newcommand{\kapitelname}[1]{\title{Übungsblatt \thesection: #1}}
+
+\RedeclareSectionCommand[
+  beforeskip=-1.0\baselineskip,
+  afterskip=0.01\baselineskip]{section}
+
+\RedeclareSectionCommand[
+  beforeskip=-1.0\baselineskip,
+  afterskip=0.01\baselineskip]{subsection}
+
+\titlehead{Einführung in die Informatik (EI) -- Prof. Thomas Smits -- Wintersemester 2019/2020}
+
+\date{\today}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Hier beginnt das eigentliche Dokument
+% An den Einstellungen davor müssen Sie normalerweise keine Änderungen
+% vornehmen.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Bitte tragen Sie hier Ihren Namen und Ihre Mattrikelnummer ein
+\author{Max Mustermann\\ (1992822)}
+
+% Welches Übungsblatt zu welchem Thema bearbeiten Sie?
+\kapitel{1}
+\kapitelname{Einführung}
+
+\begin{document} % Hier beginnt das eigentliche Dokument
+\maketitle       % Titel erzeugen
+
+% ----------------------------------------------------------------------------
+% Jede Aufgabe bekommt eine subsection. Die Nummerierung erfolgt automatisch
+\subsection{TITEL DER AUFGABE}
+
+% Sinnvollerweise wiederholen Sie die Frage noch einmal
+FRAGE
+
+% Hier beginnt Ihre Lösung
+\loesung
+IHRE LÖSUNG
+
+% Ende des Dokuments
+\end{document}
